@@ -1,0 +1,127 @@
+.products_row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Minimal spacing between products */
+}
+
+.product {
+  background-color: white;
+  flex: 1;
+  max-height: 400px;
+  min-width: calc(33.33% - 20px); /* Ensure three products per row */
+  margin: 10px 0; /* Minimal top and bottom margin */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 12px; /* Softer corners */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.product:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product img {
+  max-height: 200px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  border-radius: 12px; /* Consistent rounded corners */
+}
+
+.product_button {
+  background: #f0c14b;
+  border: 1px solid;
+  margin-top: 10px;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+  border-radius: 8px;
+  transition: background-color 0.3s ease; /* Smooth button transition */
+}
+
+.product_button:hover {
+  background-color: #ddb347;
+}
+
+.products_row > .product {
+  flex: 1 1 calc(33.33% - 10px); /* Ensure each product takes up a third of the row, minus the gap */
+}
+
+.product {
+  background-color: white;
+  z-index: 1;
+  flex: 1;
+  max-height: 400px;
+  min-width: 100px;
+  margin: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 12px; /* Make corners less aggressive */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.product:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product img {
+  max-height: 200px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  border-radius: 12px; /* Apply to images as well for consistency */
+}
+
+.product_info p {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.product_price {
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.product_rating {
+  display: flex;
+  margin-top: 10px;
+}
+
+.product_button {
+  background: #f0c14b;
+  border: 1px solid;
+  margin-top: 10px;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+  border-radius: 8px;
+  transition: background-color 0.3s ease; /* Smooth button transition */
+}
+
+.product_button:hover {
+  background-color: #ddb347;
+}
+
+@media (max-width: 768px) {
+  .product {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+
+  .product_info p {
+    font-size: 14px;
+  }
+
+  .product_price {
+    font-size: 16px;
+  }
+
+  .product_button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
