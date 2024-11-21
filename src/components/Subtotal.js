@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import CurrencyFormat from "react-currency-format";
+import { NumericFormat } from "react-number-format"; // Use NumericFormat instead of NumberFormat
 import "./Subtotal.css";
 import ShoppingContext from "./Context/shopping/shoppingContext";
 
 const Subtotal = () => {
-  const navigate = useNavigate(); // Replace useHistory with useNavigate
+  const navigate = useNavigate();
   const shoppingContext = useContext(ShoppingContext);
   const { basket, getBasketTotal } = shoppingContext;
 
@@ -15,7 +15,12 @@ const Subtotal = () => {
 
   return (
     <div className="subtotal">
-      <CurrencyFormat
+      <NumericFormat
+        value={basketTotal} // Use the basket total
+        displayType="text"
+        thousandSeparator // Add thousand separator for better formatting
+        prefix="$" // Add a prefix for currency
+        decimalScale={2} // Set decimal places to 2
         renderText={(value) => (
           <>
             <p>
@@ -26,10 +31,6 @@ const Subtotal = () => {
             </small>
           </>
         )}
-        decimalScale={2}
-        value={getBasketTotal(basket)}
-        displayType={"text"}
-        prefix={"$"}
       />
       <button onClick={() => navigate("/payment")}>Proceed to Checkout</button>
     </div>

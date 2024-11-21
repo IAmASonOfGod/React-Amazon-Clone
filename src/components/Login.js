@@ -12,6 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate(); // Hook to programmatically navigate
 
+  // Sign In function
   const signIn = async (e) => {
     e.preventDefault();
     try {
@@ -20,14 +21,15 @@ const Login = () => {
         email,
         password
       );
-      if (userCredential) {
-        navigate("/"); // Redirect after successful sign-in
-      }
+      console.log("User signed in:", userCredential.user);
+      navigate("/"); // Redirect after successful sign-in
     } catch (error) {
-      alert(error.message); // Handle errors
+      console.error("Sign-in error:", error.code, error.message);
+      alert(`Sign-in failed: ${error.message}`);
     }
   };
 
+  // Register function
   const register = async (e) => {
     e.preventDefault();
     try {
@@ -36,11 +38,11 @@ const Login = () => {
         email,
         password
       );
-      if (userCredential) {
-        navigate("/"); // Redirect after successful registration
-      }
+      console.log("User registered:", userCredential.user);
+      navigate("/"); // Redirect after successful registration
     } catch (error) {
-      alert(error.message); // Handle errors
+      console.error("Registration error:", error.code, error.message);
+      alert(`Registration failed: ${error.message}`);
     }
   };
 
@@ -58,23 +60,27 @@ const Login = () => {
         <form>
           <h5>E-mail</h5>
           <input
-            type="email" // Use 'email' type for email input
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            required
           />
           <h5>Password</h5>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            required
           />
           <button type="submit" className="login_signInButton" onClick={signIn}>
             Sign In
           </button>
           <p>
-            By signing-in you agree to the AMAZON CLONE conditions of use &
-            sale. Please see our privacy notice, our cookies notice, and our
-            interest-based ads notice.
+            By signing in, you agree to the AMAZON CLONE Conditions of Use &
+            Sale. Please see our Privacy Notice, Cookies Notice, and
+            Interest-Based Ads Notice.
           </p>
         </form>
         <button className="login_registerButton" onClick={register}>

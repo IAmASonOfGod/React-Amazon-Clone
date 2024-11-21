@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import CheckoutProduct from "./CheckoutProduct";
 import "./Payment.css";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import CurrencyFormat from "react-currency-format";
+import { NumericFormat } from "react-number-format";// Replaced CurrencyFormat with NumberFormat
 import { db } from "../config/firebase-config";
 
 const Payment = () => {
@@ -149,13 +149,13 @@ const Payment = () => {
             <form onSubmit={handleSubmit}>
               <CardElement onChange={handleChange} />
               <div className="payment_price_container">
-                <CurrencyFormat
-                  renderText={(value) => <h3>Order Total: {value}</h3>}
-                  decimalScale={2}
-                  value={getBasketTotal(basket)}
+                <NumericFormat
+                  value={getBasketTotal(basket)} // Use the basket total
                   displayType={"text"}
-                  thousandSeparator={true}
-                  prefix={"$"}
+                  thousandSeparator={true} // Add thousand separator
+                  prefix={"$"} // Add a prefix for currency
+                  decimalScale={2} // Set decimal places to 2
+                  renderText={(value) => <h3>Order Total: {value}</h3>}
                 />
                 <button disabled={processing || disabled || succeeded}>
                   <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
