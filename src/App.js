@@ -1,4 +1,5 @@
 import "./App.css";
+import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/Home";
 import Products from "./components/Products";
@@ -11,7 +12,7 @@ import Orders from "./components/Orders";
 import NotFound from "./components/NotFound";
 import { useContext } from "react";
 import ShoppingContext from "./components/Context/shopping/shoppingContext";
-// import { auth } from "./config/firebase-config";
+import { auth } from "./config/firebase-config";
 import Checkout from "./components/Checkout";
 import Payment from "./components/Payment";
 
@@ -23,20 +24,20 @@ const stripePromise = loadStripe(
 const App = () => {
   const shoppingContext = useContext(ShoppingContext);
   const { setUser } = shoppingContext;
+  useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      console.log("User is ->", authUser);
 
-  // useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged((authUser) => {
-  //     console.log("User is ->", authUser);
+      if (authUser) {
+        setUser(authUser);
+      } else {
+        setUser({ user: null });
+      }
+    });
 
-  //     if (authUser) {
-  //       setUser(authUser);
-  //     } else {
-  //       setUser({ user: null });
-  //     }
-  //   });
-
-  //   return () => unsubscribe();
-  // }, [setUser]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
