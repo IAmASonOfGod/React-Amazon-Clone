@@ -6,7 +6,11 @@ const stripe = require("stripe")(
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://amazonlec.netlify.app/",
+  })
+);
 
 app.post("/payment/create", async (req, res) => {
   const { total } = req.body;
