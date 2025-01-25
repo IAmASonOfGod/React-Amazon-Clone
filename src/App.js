@@ -9,9 +9,9 @@ import Productdetails from "./components/Productdetails";
 import Login from "./components/Login";
 import Orders from "./components/Orders";
 import NotFound from "./components/NotFound";
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import ShoppingContext from "./components/Context/shopping/shoppingContext";
-import { auth } from "./config/firebase-config";
+// import { auth } from "./config/firebase-config";
 import Checkout from "./components/Checkout";
 import Payment from "./components/Payment";
 
@@ -24,19 +24,19 @@ const App = () => {
   const shoppingContext = useContext(ShoppingContext);
   const { setUser } = shoppingContext;
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      console.log("User is ->", authUser);
+  // useEffect(() => {
+  //   const unsubscribe = auth.onAuthStateChanged((authUser) => {
+  //     console.log("User is ->", authUser);
 
-      if (authUser) {
-        setUser(authUser);
-      } else {
-        setUser({ user: null });
-      }
-    });
+  //     if (authUser) {
+  //       setUser(authUser);
+  //     } else {
+  //       setUser({ user: null });
+  //     }
+  //   });
 
-    return () => unsubscribe();
-  }, [setUser]); 
+  //   return () => unsubscribe();
+  // }, [setUser]);
 
   return (
     <>
