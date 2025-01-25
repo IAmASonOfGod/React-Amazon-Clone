@@ -7,7 +7,7 @@ import ShoppingContext from "./Context/shopping/shoppingContext";
 const Subtotal = () => {
   const navigate = useNavigate();
   const shoppingContext = useContext(ShoppingContext);
-  const { basket, getBasketTotal, orders, setOrders } = shoppingContext;
+  const { getBasketTotal, orders, setOrders } = shoppingContext;
 
   const basketTotal = getBasketTotal(orders);
 

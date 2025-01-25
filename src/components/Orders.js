@@ -6,7 +6,7 @@ import OrdersTotal from "./OrdersTotal";
 
 const Orders = () => {
   const shoppingContext = useContext(ShoppingContext);
-  const { basket, orders } = shoppingContext;
+  const { orders } = shoppingContext;
 
   return (
     <>

@@ -1,17 +1,17 @@
-import React, { useContext } from "react";
-import ShoppingContext from "./Context/shopping/shoppingContext";
+import React from "react";
+// import ShoppingContext from "./Context/shopping/shoppingContext";
 import "./OrdersProduct.css";
 
-const OrdersProduct = ({ id, image, title, rating, price, hideButton }) => {
+const OrdersProduct = ({ id, image, title, rating, price }) => {
   console.log("Rendering product:", { id, title, price, image });
 
-  const shoppingContext = useContext(ShoppingContext);
-  const { removeFromBasket } = shoppingContext;
+  // const shoppingContext = useContext(ShoppingContext);
+  // const { removeFromBasket } = shoppingContext;
 
-  const removeFromBasketHandler = () => {
-    console.log("Removing item with id:", id);
-    removeFromBasket(id);
-  };
+  // const removeFromBasketHandler = () => {
+  //   console.log("Removing item with id:", id);
+  //   removeFromBasket(id);
+  // };
 
   return (
     <div className="checkout_product">

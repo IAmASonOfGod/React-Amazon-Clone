@@ -5,8 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import CheckoutProduct from "./CheckoutProduct";
 import "./Payment.css";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { NumericFormat } from "react-number-format"; // Replaced CurrencyFormat with NumberFormat
-import { db } from "../config/firebase-config";
+import { NumericFormat } from "react-number-format"; 
+
 
 const Payment = () => {
   const shoppingContext = useContext(ShoppingContext);

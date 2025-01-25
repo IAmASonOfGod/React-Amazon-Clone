@@ -34,7 +34,9 @@ const App = () => {
         setUser({ user: null });
       }
     });
-  }, []);
+
+    return () => unsubscribe();
+  }, [setUser]); 
 
   return (
     <>

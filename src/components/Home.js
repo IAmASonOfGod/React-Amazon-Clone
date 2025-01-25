@@ -9,7 +9,7 @@ const Home = () => {
         <img
           className="home_image"
           src="https://m.media-amazon.com/images/I/71Ie3JXGfVL._SX3000_.jpg"
-          alt="Hero image"
+          alt="HeroImage"
         />
         <Products />
       </div>
