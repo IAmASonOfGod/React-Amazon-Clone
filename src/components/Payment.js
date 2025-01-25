@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import CheckoutProduct from "./CheckoutProduct";
 import "./Payment.css";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { NumericFormat } from "react-number-format";// Replaced CurrencyFormat with NumberFormat
+import { NumericFormat } from "react-number-format"; // Replaced CurrencyFormat with NumberFormat
 import { db } from "../config/firebase-config";
 
 const Payment = () => {
@@ -28,7 +28,7 @@ const Payment = () => {
     const getClientSecret = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5001/payment/create",
+          "https://react-amazon-clone.onrender.com/payment/create",
           {
             total: getBasketTotal(basket) * 100,
           }
@@ -95,7 +95,7 @@ const Payment = () => {
         setSucceeded(true);
         setError(null);
 
-        setOrders(basket)
+        setOrders(basket);
 
         emptyBasket();
 
