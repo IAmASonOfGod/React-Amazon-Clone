@@ -10,7 +10,8 @@ import { db } from "../config/firebase-config";
 
 const Payment = () => {
   const shoppingContext = useContext(ShoppingContext);
-  const { basket, user, getBasketTotal, emptyBasket } = shoppingContext;
+  const { basket, user, getBasketTotal, emptyBasket, setOrders } =
+    shoppingContext;
 
   const navigate = useNavigate();
 
@@ -93,6 +94,8 @@ const Payment = () => {
         //   });
         setSucceeded(true);
         setError(null);
+
+        setOrders(basket)
 
         emptyBasket();
 

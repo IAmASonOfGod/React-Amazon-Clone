@@ -1,10 +1,11 @@
-import React, { useReducer } from "react";
+import React, { useReducer , useState} from "react";
 import ShoppingContext from "./shoppingContext";
 import { shoppingReducer } from "./shoppingReducer";
 
 export const ShoppingState = (props) => {
   const initialstate = { basket: [], user: null };
   const [state, dispatch] = useReducer(shoppingReducer, initialstate);
+   const [orders, setOrders] = useState([]);
 
   const getBasketTotal = (basket) =>
     basket?.reduce((amount, { item }) => item.price + amount, 0);
@@ -38,6 +39,8 @@ export const ShoppingState = (props) => {
         setUser,
         removeFromBasket,
         emptyBasket,
+        orders,
+        setOrders,
       }}
     >
       {props.children}
